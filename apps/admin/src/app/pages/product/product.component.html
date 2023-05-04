@@ -1,0 +1,105 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+
+<div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Brand</th>
+          <th>Qte</th>
+          <th>Price</th>
+          <th>Thumbnail</th>
+          <th>Rating</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productss">
+          <td>{{ product.title }}</td>
+          <td>{{ product.brand }}</td>
+          <td>{{ product.countStock }}</td>
+          <td>{{ product.price }}</td>
+          <td><img class="imgP" [src]="product.thumbnail" alt="{{ product.title }} thumbnail"></td>
+          <td>{{ product.rating }}</td>
+          <td>
+            <a (click)="destroyCategory(product?._id ?? '')" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+    </div>
+</div> -->
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <ol class="breadcrumb" >
+                <li class="breadcrumb-item "><a class="st" routerLink="/admin">Dashboard</a></li>
+                <li class="breadcrumb-item active">Product</li>
+              </ol>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12 shadow-sm p-3 mb-5 bg-body rounded">
+            <div class="d-flex justify-content-end mb-2">
+                <button routerLink="/admin/product/addproduct" class="btn btn-primary mx-3 ">Add Product</button>
+            </div>
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                  <tr>
+                    <th>Product</th>
+                    <th>Brand</th>
+                    <th>Qte</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of productss">
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                        [src]="product.thumbnail" alt="{{product.title}} thumbnail"
+                            style="width: 45px; height: 45px"
+                            class="rounded-circle"
+                            />
+                        <div class="ms-3">
+                          <p class="fw-bold mb-1">{{ product.title }}</p>
+                          <!-- <p class="text-muted mb-0">{{product.content}}</p> -->
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">{{ product.brand }}</p>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">{{ product.countStock }}</p>
+                      <!-- <p class="text-muted mb-0">{{product.brand}}</p> -->
+                    </td>
+                    <td>
+                      <span class="fw-normal mb-1">{{product.price | currency:'USD'}}</span>
+                    </td>
+                    <td>{{product.rating}}</td>
+                    <!-- <td>
+                      <button type="button" class="btn btn-link btn-sm btn-rounded">
+                        Edit
+                      </button>
+                    </td> -->
+                    <td class="align-middle">
+                        <a data-mdb-toggle="tooltip" [routerLink]="['/admin/product/editproduct',product._id]"
+                          ><i class="fa fa-pencil text-primary me-4" aria-hidden="true"></i
+                        ></a>
+                        <a data-mdb-toggle="tooltip" (click)="destroyCategory(product?._id ?? '')" title="Remove"
+                          ><i class="fa fa-trash text-danger" aria-hidden="true"></i
+                        ></a>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

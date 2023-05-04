@@ -1,0 +1,182 @@
+<div class="row mt-3">
+    <div class="col-md-12">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item "><a class="st" routerLink="/admin">Dashboard</a></li>
+            <li class="breadcrumb-item "><a class="st" routerLink="/admin/product">Product</a></li>
+            <li class="breadcrumb-item active">Add Product</li>
+          </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="shadow-lg p-4 mb-5 bg-body rounded">
+            <div class="col-md-12 mx-auto">
+                <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+                <div class="d-flex">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="title" class="form-label mt-2">Title</label>
+                            <input formControlName="title" type="text" class="form-control" id="title" name="title" placeholder="Title">
+                            <!-- validtion For Title -->
+                            <small class="text-danger" *ngIf="productForm .get('title')?.invalid && (productForm .get('title')?.touched || productForm .get('title')?.dirty)">
+                                <p *ngIf="productForm .get('title')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="productForm .get('title')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="productForm .get('title')?.errors?.['maxlength']">
+                                    this max is 10 caracter
+                                </p>
+                                <p *ngIf="productForm .get('title')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="discription" class="form-label mt-2">discription</label>
+                            <textarea formControlName="discription" name="discription" placeholder="discription" class="form-control" id="discription" cols="1" rows="1"></textarea>
+                            <small class="text-danger" *ngIf="productForm .get('discription')?.invalid && (productForm .get('discription')?.touched || productForm .get('discription')?.dirty)">
+                                <p *ngIf="productForm .get('discription')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="productForm .get('discription')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="productForm .get('discription')?.errors?.['maxlength']">
+                                    this max is 50 caracter
+                                </p>
+                                <p *ngIf="productForm .get('discription')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="form-label mt-2">Content</label>
+                            <input  formControlName="content"  type="text" class="form-control" id="content" name="content" placeholder="content">
+                            <small class="text-danger" *ngIf="productForm .get('content')?.invalid && (productForm .get('content')?.touched || productForm .get('content')?.dirty)">
+                                <p *ngIf="productForm .get('content')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="productForm .get('content')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="productForm .get('content')?.errors?.['maxlength']">
+                                    this max is 50 caracter
+                                </p>
+                                <p *ngIf="productForm .get('content')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="brand" class="form-label mt-2">Brand</label>
+                            <input  formControlName="brand"  type="text" class="form-control" id="brand" name="brand" placeholder="brand">
+                            <small class="text-danger" *ngIf="productForm .get('brand')?.invalid && (productForm .get('brand')?.touched || productForm .get('brand')?.dirty)">
+                                <p *ngIf="productForm .get('brand')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="productForm .get('brand')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="productForm .get('brand')?.errors?.['maxlength']">
+                                    this max is 10 caracter
+                                </p>
+                                <p *ngIf="productForm .get('brand')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="countStock" class="form-label mt-2">Qte</label>
+                            <input  formControlName="countStock"  type="number" class="form-control" id="countStock" name="countStock" placeholder="Qte">
+                            <small class="text-danger" *ngIf="productForm .get('countStock')?.invalid && (productForm .get('countStock')?.touched || productForm .get('countStock')?.dirty)">
+                                <p *ngIf="productForm .get('countStock')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mx-2">
+                        <div class="form-group">
+                            <label for="price" class="form-label mt-2">Price</label>
+                            <input  formControlName="price"  type="number" class="form-control" id="price" name="price" placeholder="price">
+                            <small class="text-danger" *ngIf="productForm .get('price')?.invalid && (productForm .get('price')?.touched || productForm .get('price')?.dirty)">
+                                <p *ngIf="productForm .get('price')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="thumbnail" class="form-label mt-2">Thumbnail</label>
+                            <input formControlName="thumbnail" (change)="onSelectFile($event)"  type="file" class="form-control" id="thumbnail" name="thumbnail"/>
+                            <div class="text-danger" *ngIf="productForm .get('thumbnail')?.invalid && (productForm .get('thumbnail')?.touched || productForm .get('thumbnail')?.dirty)">
+                                <div *ngIf="productForm .get('thumbnail')?.errors?.['required']">
+                                    this field is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating" class="form-label mt-2">Rating</label>
+                            <input formControlName="rating" type="number" class="form-control" id="rating" name="rating" placeholder="rating">
+                            <small class="text-danger" *ngIf="productForm .get('rating')?.invalid && (productForm .get('rating')?.touched || productForm .get('rating')?.dirty)">
+                                <p *ngIf="productForm .get('rating')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="productForm .get('rating')?.errors?.['min']">
+                                    the min is 0
+                                </p>
+                                 
+                                <p  *ngIf="productForm .get('rating')?.errors?.['max']">
+                                    the max is 5
+                                </p>
+                            </small>
+                        </div>
+                        <!-- <div class="btn-group btnR" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" formControlName="isFeatured" class="btn-check" name="isFeatured" id="isFeaturedTrue">
+                            <label class="btn btn-outline-primary" for="isFeaturedTrue">True</label>
+                            <input type="radio" formControlName="isFeatured" class="btn-check" name="isFeatured" id="isFeaturedFalse">
+                            <label class="btn btn-outline-primary" for="isFeaturedFalse">False</label>
+                        </div>                           -->
+                              <!-- <legend class="mt-4">isFeatured</legend>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="isFeatured" id="isFeatured">
+                                        <label class="form-check-label" for="isFeatured" >False</label>
+                                    </div>
+                                    <div class="form-check disabled">
+                                        <input class="form-check-input" type="radio" name="isFeatured" id="isFeatured">
+                                        <label class="form-check-label" for="isFeatured" >True</label>
+                                    </div>
+                            <small class="text-danger" *ngIf="productForm .get('isFeatured')?.invalid && (productForm .get('isFeatured')?.touched || productForm .get('isFeatured')?.dirty)">
+                                <p *ngIf="productForm .get('isFeatured')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                            </small> -->
+                        <!-- </div> -->
+                        <div class="form-group">
+                            <label for="category" class="form-label mt-2">Category<span style="font-size: smaller;" class="text-muted"> (required)</span></label>
+                            <select class="form-select" formControlName="category" id="category" name="category">
+                              <option *ngFor="let cat of categories" [ngValue]="cat?._id">{{cat.label}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="productForm .get('category')?.invalid && (productForm .get('category')?.touched || productForm .get('category')?.dirty)">
+                                <p *ngIf="productForm .get('category')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <ng-container >
+                        <button   class="my-2 btn btn-primary"><i class="fa fa-send"></i> Submit</button>
+                    </ng-container>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

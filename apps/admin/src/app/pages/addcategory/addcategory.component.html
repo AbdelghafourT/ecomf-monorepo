@@ -1,0 +1,77 @@
+<div class="row mt-5">
+    <div class="col-md-6 mx-auto">
+        <form [formGroup]="addcategory" (ngSubmit)="saveCategory()">
+            <!-- label input -->
+            <div class="form-group">
+                <label for="label" class="form-label">label</label>
+                <input formControlName="label" type="text" name="label" id="label"  class="form-control">
+                <!-- Validation taskName-->
+                <div class="alert alert-danger" *ngIf="addcategory.get('label')?.invalid && (addcategory.get('label')?.touched || addcategory.get('label')?.dirty)">
+                    <div *ngIf="addcategory.get('label')?.errors?.['required']">
+                        this field is required
+                    </div>
+                    <div *ngIf="addcategory.get('label')?.errors?.['minlength']">
+                        this field should be greater than 5 caracter
+                    </div>
+                     
+                    <div  *ngIf="addcategory.get('label')?.errors?.['maxlength']">
+                        this max is 19 caracter
+                    </div>
+                    <div *ngIf="addcategory.get('label')?.errors?.['pattern']">
+                        this field not respect our pattern
+                    </div>
+                </div>
+            </div>
+          
+            <!-- icon input -->
+            <div class="form-group">
+                <label for="icon" class="form-label">Icon</label>
+                <input formControlName="icon" type="text" name="icon" id="icon" class="form-control">
+                <!-- Validation taskName-->
+                <div class="alert alert-danger" *ngIf="addcategory.get('icon')?.invalid && (addcategory.get('icon')?.touched || addcategory.get('icon')?.dirty)">
+                    <div *ngIf="addcategory.get('icon')?.errors?.['required']">
+                        this field is required
+                    </div>
+                    <div *ngIf="addcategory.get('icon')?.errors?.['minlength']">
+                        this field should be greater than 5 caracter
+                    </div>
+                     
+                    <div  *ngIf="addcategory.get('icon')?.errors?.['maxlength']">
+                        this max is 19 caracter
+                    </div>
+                    <div *ngIf="addcategory.get('icon')?.errors?.['pattern']">
+                        this field not respect our pattern
+                    </div>
+                </div>
+            </div>
+            <!-- color input -->
+            <div class="form-group">
+                <label for="color" class="form-label">color</label>
+                <input formControlName="color" type="color" name="color" id="color" class="form-control">
+                <!-- Validation taskName-->
+                <div class="alert alert-danger" *ngIf="addcategory.get('color')?.invalid && (addcategory.get('icon')?.touched || addcategory.get('icon')?.dirty)">
+                    <div *ngIf="addcategory.get('color')?.errors?.['required']">
+                        this field is required
+                    </div>
+                    <div *ngIf="addcategory.get('color')?.errors?.['minlength']">
+                        this field should be greater than 5 caracter
+                    </div>
+                     
+                    <div  *ngIf="addcategory.get('color')?.errors?.['maxlength']">
+                        this max is 19 caracter
+                    </div>
+                    <div *ngIf="addcategory.get('color')?.errors?.['pattern']">
+                        this field not respect our pattern
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="d-grid">
+                <ng-container >
+                    <button   class="my-2 btn btn-success"><i class="fa fa-send"></i> Submit</button>
+                </ng-container>
+            </div>
+          </form>
+    </div>
+</div>
