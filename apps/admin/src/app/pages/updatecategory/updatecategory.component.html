@@ -1,10 +1,18 @@
-<div class="row mt-5">
-    <div class="col-md-6 mx-auto">
+<div class="row mt-3">
+    <div class="col-md-12">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item "><a class="st" routerLink="/admin">Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Category</li>
+          </ol>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
         <form [formGroup]="editcategory" (submit)="submit(editcategory)">
             <!-- label input -->
             <div class="form-group">
                 <label for="label" class="form-label">label</label>
-                <input formControlName="label" type="text" name="label" id="label"  class="form-control">
+                <input formControlName="label" placeholder="label" type="text" name="label" id="label"  class="form-control">
                 <!-- Validation taskName-->
                 <div class="alert alert-danger" *ngIf="editcategory.get('label')?.invalid && (editcategory.get('label')?.touched || editcategory.get('label')?.dirty)">
                     <div *ngIf="editcategory.get('label')?.errors?.['required']">
@@ -26,7 +34,7 @@
             <!-- icon input -->
             <div class="form-group">
                 <label for="icon" class="form-label">Icon</label>
-                <input formControlName="icon" type="text" name="icon" id="icon"  class="form-control">
+                <input formControlName="icon" placeholder="icon" type="text" name="icon" id="icon"  class="form-control">
                 <!-- Validation taskName-->
                 <div class="alert alert-danger" *ngIf="editcategory.get('icon')?.invalid && (editcategory.get('icon')?.touched || editcategory.get('icon')?.dirty)">
                     <div *ngIf="editcategory.get('icon')?.errors?.['required']">
@@ -47,7 +55,7 @@
             <!-- color input -->
             <div class="form-group">
                 <label for="color" class="form-label">color</label>
-                <input formControlName="color" type="color" name="color" id="color" class="form-control">
+                <input formControlName="color" type="color"  name="color" id="color" class="form-control">
                 <!-- Validation taskName-->
                 <div class="alert alert-danger" *ngIf="editcategory.get('color')?.invalid && (editcategory.get('color')?.touched || editcategory.get('icon')?.dirty)">
                     <div *ngIf="editcategory.get('color')?.errors?.['required']">
@@ -69,7 +77,7 @@
             <!-- Submit button -->
             <div class="d-grid">
                 <ng-container >
-                    <button   class="my-2 btn btn-success"><i class="fa fa-send"></i> Submit</button>
+                    <button   class="my-2 btn btn-primary"><i class="fa fa-send"></i> Submit</button>
                 </ng-container>
             </div>
           </form>

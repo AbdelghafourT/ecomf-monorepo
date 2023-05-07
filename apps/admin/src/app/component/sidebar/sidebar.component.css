@@ -3,5 +3,15 @@
 }
 .textColor{
     color: #FFFFFF;
-    font-size: small;
+    font-size:medium;
 }
+.textColor1{
+    color: #FFFFFF;
+    font-size:small;
+}
+.sticky-sidebar {
+    position:fixed;
+    /* max-width: 20%; */
+}
+
+  

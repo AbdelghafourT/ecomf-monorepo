@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Category,ResCategory, ResOneCategory} from './../../../../../../libs/shared/src/lib/models/category';
 import { CategoryService } from './../../../../../../libs/shared/src/lib/services/category.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 // import { CategoryService } from '@brightcoding/shared';
 
@@ -28,7 +29,7 @@ export class ListcategoryComponent implements OnInit{
     color:""
   }
 
-  constructor(private categoryService:CategoryService,private route: ActivatedRoute){}
+  constructor(private categoryService:CategoryService,private route: ActivatedRoute,private toastr:ToastrService){}
   
   ngOnInit(): void {
    this.getCategories()
@@ -44,6 +45,7 @@ export class ListcategoryComponent implements OnInit{
   destroyCategory(id:string){
     this.categoryService.deleteCategory(id).subscribe((res)=> {
       this.categories = res.categorys
+      this.toastr.success('Category deleted successfully','Success')
       this.getCategories()
     })
   }

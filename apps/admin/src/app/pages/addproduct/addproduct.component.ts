@@ -24,8 +24,8 @@ export class AddproductComponent implements OnInit{
     })
   }
   productForm  = new FormGroup({
-    title:new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(10),Validators.pattern('[a-zA-Z0-9 ]*')]),
-    discription :new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(50),Validators.pattern('[a-zA-Z0-9 ]*')]),
+    title:new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(20),Validators.pattern('[a-zA-Z0-9 ]*')]),
+    discription :new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(100),Validators.pattern('[a-zA-Z0-9 ]*')]),
     content:new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(50),Validators.pattern('[a-zA-Z0-9 ]*')]),
     brand :new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(10),Validators.pattern('[a-zA-Z0-9 ]*')]),
     countStock:new  UntypedFormControl('',Validators.required),

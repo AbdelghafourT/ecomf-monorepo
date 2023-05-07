@@ -1,73 +1,54 @@
-<div class="row mt-4">
-    <div class="col-md-6">
-        <h1>List of Category</h1>
-    </div>
-    <div class="col-md-6 text-end"><a routerLink="/admin/category/addCategory" class="btn btn-link">New Category</a></div>
+<div class="row mt-3">
+  <div class="col-md-12">
+      <ol class="breadcrumb" >
+          <li class="breadcrumb-item "><a class="st" routerLink="/admin">Dashboard</a></li>
+          <li class="breadcrumb-item active">Category</li>
+        </ol>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-md-12 shadow-sm p-3 mb-5 bg-body rounded">
+      <div class="d-flex justify-content-between mb-2">
+        <div >
+          <h4>List Of Categorys</h4>
+        </div>
+        <div >
+          <button routerLink="/admin/category/addCategory" class="btn btn-primary mx-3 ">New Category</button>
+        </div>
+      </div>
+      <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr>
+            <th>Label</th>
+            <th>Icon</th>
+            <th>Colr</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories ; index as i">
+            <td>
+              <div class="d-flex align-items-center">
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{category.label}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="fw-normal mb-1"><i class="fa" [ngClass]="category.icon" [ngStyle]="{color: category.color}"> {{category.icon}}</i></p>
+            </td>
+            <td [ngStyle]="{color: category.color}">{{category.color}}</td>
+            <td class="align-middle">
+              <a data-mdb-toggle="tooltip" [routerLink]="['/admin/category/editCategory/',category._id]" 
+                ><i class="fa fa-pencil text-primary me-4" aria-hidden="true"></i
+              ></a>
+              <a data-mdb-toggle="tooltip" (click)="destroyCategory(category?._id ?? '')" title="Remove"
+                ><i class="fa fa-trash text-danger" aria-hidden="true"></i
+              ></a>
+            </td>
+          </tr>   
+        </tbody>
+      </table>
+  </div>
 </div>
 
-<!-- <div class="row">
-    <div class="col-md-12">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Label</th>
-                <th scope="col">icon</th>
-                <th scope="col">color</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let category of categories"index as i>
-                <th>{{category.label}}</th>
-                <td><i class="fa" [ngClass]="category.icon" > {{category.icon}}</i></td>
-                <td>{{category.color}}</td>
-                <td class="text-end">
-                    <button class="btn btn-warning me-2">Edit</button>
-                    <button (click)="destroyCategory(category?._id ?? '')" class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
-</div> -->
-<div class="row mt-5">
-    <div class="col-md-12">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Label</th>
-                <th scope="col">icon</th>
-                <th scope="col">color</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let category of categories ; index as i">
-                <th  [ngStyle]="{color: category.color}">{{category.label}}</th>
-                <td><i class="fa" [ngClass]="category.icon" [ngStyle]="{color: category.color}"> {{category.icon}}</i></td>
-                <td [ngStyle]="{color: category.color}">{{category.color}}</td>
-                <td class="text-end">
-                    <a [routerLink]="['/admin/category/editCategory/',category._id]" class="btn btn-outline-warning me-2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <button (click)="showEditForm(i)" class="btn btn-outline-success me-2"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                    <button (click)="destroyCategory(category?._id ?? '')" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </td>
-              </tr>
-              <tr *ngIf="showForm">
-                <td>
-                  <input type="text" [(ngModel)]="editLabel" />
-                </td>
-                <td>
-                  <input type="text" [(ngModel)]="editIcon" />
-                </td>
-                <td>
-                  <input class="hh" type="color" [(ngModel)]="editColor"/>
-                </td>
-                <td class="text-end">
-                  <button (click)="updateCategory()" class="btn btn-outline-primary">Save</button>
-                  <button (click)="cancelEdit()" class="btn btn-outline-danger mx-1">Cancel</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
-</div>

@@ -19,11 +19,14 @@ import { ProductComponent } from './pages/product/product.component';
 import { EditproductComponent } from './pages/editproduct/editproduct.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { UsersComponent } from './pages/users/users.component';
+import { PostuserComponent } from './pages/postuser/postuser.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NeworderComponent } from './pages/neworder/neworder.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, DashboardComponent, ListcategoryComponent, AddcategoryComponent, UpdatecategoryComponent, SidebarComponent, AddproductComponent, ProductComponent, EditproductComponent, OrdersComponent, UsersComponent],
+  declarations: [AppComponent, NxWelcomeComponent, DashboardComponent, ListcategoryComponent, AddcategoryComponent, UpdatecategoryComponent, SidebarComponent, AddproductComponent, ProductComponent, EditproductComponent, OrdersComponent, UsersComponent, PostuserComponent, LoginComponent, NeworderComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

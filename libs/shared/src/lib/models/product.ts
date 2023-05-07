@@ -9,7 +9,7 @@ export interface Product {
   countStock?:number;
   price?:number;
   thumbnail?:string;
-  images?:string[];
+  //images?:string[];
   rating?:number;
   isFeatured?:boolean;
   category?:Category[];

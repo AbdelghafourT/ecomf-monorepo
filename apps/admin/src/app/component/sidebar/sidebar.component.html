@@ -1,125 +1,82 @@
-<!-- <div class="container-fluid">    
-    <div class="row flex-nowrap">
-      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-        <div
-          class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 textColor min-vh-100">
-          <a
-            href="/"
-            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto textColor text-decoration-none">
-            <span class="fs-5 d-none d-sm-inline">Admin Panel</span>
+<div class="container-fluid">
+  <div class="row flex-nowrap ">
+    <ng-container *ngIf="!(router.url.includes('/login') || router.url.includes('/register'))">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bgColor ">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 textColor min-vh-100 ">
+          <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto textColor text-decoration-none ">
+            <span class="fs-5 d-none d-sm-inline mt-3">Admin Panel</span>
           </a>
-          <ul
-            class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-            id="menu">
-            <li
-              class="nav-item"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 fs-4 align-items-center align-items-sm-start " id="menu">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
               <a routerLink="/admin" class="nav-link align-middle px-0">
-                <i class="fa fa-tachometer" aria-hidden="true"></i>
-                <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                <i class="fa fa-tachometer textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor">Dashboard</span>
               </a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/admin/category" class="nav-link align-middle px-0">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-                <span class="ms-1 d-none d-sm-inline">Categories</span>
+            <li routerLinkActive="active">
+              <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <i class="fa fa-product-hunt textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Product </span>
+                <div class="sb-sidenav-collapse-arrow"></div>
               </a>
+              <div class="collapse " id="collapseLayouts" aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion">
+                <nav class="">
+                  <a class="nav-link textColor1" routerLink="/admin/product"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>Products</a>
+                  <a class="nav-link textColor1" routerLink="admin/product/addproduct"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>addProduct</a>
+                </nav>
+              </div>
+            </li>
+            <li routerLinkActive="active">
+              <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
+                <i class="fa fa-th-large textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Category </span>
+                <div class="sb-sidenav-collapse-arrow"></div>
+              </a>
+              <div class="collapse " id="collapseLayouts3" aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion">
+                <nav class="">
+                  <a class="nav-link textColor1" routerLink="admin/category"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>Categorys</a>
+                  <a class="nav-link textColor1" routerLink="admin/category/addCategory"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>addCategory</a>
+                </nav>
+              </div>
+            </li>
+            <li routerLinkActive="active">
+              <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                <i class="fa fa-cube textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Orders </span>
+                <div class="sb-sidenav-collapse-arrow"></div>
+              </a>
+              <div class="collapse " id="collapseLayouts2" aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion">
+                <nav class="">
+                  <a class="nav-link textColor1" routerLink="/admin/Orders"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>All Orders</a>
+                  <a class="nav-link textColor1" routerLink="/admin/newOrder"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>New Orders</a>
+                </nav>
+              </div>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a
-                routerLink="/admin/product"
-                routerLinkActive="active"
-                class="nav-link align-middle px-0">
-                <i class="fa fa-product-hunt" aria-hidden="true"></i>
-                <span class="ms-1 d-none d-sm-inline">Products</span>
-              </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/admin/user" class="nav-link align-middle px-0">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <span class="ms-1 d-none d-sm-inline">Users</span>
+              <a routerLink="/admin/users" class="nav-link align-middle px-0">
+                <i class="fa fa-users textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Users</span>
               </a>
             </li>
           </ul>
-          <hr /> -->
-          <div class="container-fluid">
-            <div class="row flex-nowrap">
-              <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bgColor">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 textColor min-vh-100">
-                  <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto textColor text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Admin Panel</span>
-                  </a>
-                  <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                      <a routerLink="/admin" class="nav-link align-middle px-0">
-                        <i class="fa fa-tachometer" aria-hidden="true"></i>
-                        <span class="ms-1 d-none d-sm-inline textColor">Dashboard</span>
-                      </a>
-                    </li>
-                    <li routerLinkActive="active">
-                      <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <i class="fa fa-th-large" aria-hidden="true"></i>
-                        <span class="ms-1 d-none d-sm-inline textColor">Catalog <i class="fa fa-arrow-down" aria-hidden="true"></i></span>
-                        <div class="sb-sidenav-collapse-arrow"></div>
-                      </a>
-                      <div class="collapse " id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="">
-                          <a class="nav-link textColor" routerLink="/admin/product"><span class="mx-3 me-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>Products</a>
-                          <a class="nav-link textColor" routerLink="admin/category"><span class="mx-3 me-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>Category</a>
-                          <a class="nav-link textColor" routerLink="admin/category/addCategory"><span class="mx-3 me-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>addCategory</a>
-                          <a class="nav-link textColor" routerLink="admin/product/addproduct"><span class="mx-3 me-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>addProduct</a>
-                        </nav>
-                      </div>
-                    </li>
-                    <li routerLinkActive="active">
-                      <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
-                        <i class="fa fa-cube" aria-hidden="true"></i>
-                        <span class="ms-1 d-none d-sm-inline textColor">Orders <i class="fa fa-arrow-down" aria-hidden="true"></i></span>
-                        <div class="sb-sidenav-collapse-arrow"></div>
-                      </a>
-                      <div class="collapse " id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="">
-                          <a class="nav-link textColor" routerLink="/admin/Orders"><span class="mx-3 me-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>All Orders</a>
-                          <a class="nav-link textColor" routerLink=""><span class="mx-3 me-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>New Ordre </a>
-                        </nav>
-                      </div>
-                    </li>
-                    <li class="nav-item" routerLinkActive="active">
-                      <a routerLink="/admin/users" class="nav-link align-middle px-0">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="ms-1 d-none d-sm-inline textColor">Users</span>
-                      </a>
-                    </li>
-                  </ul>
-                  <hr />
-          <div class="dropdown pb-4">
-            <a
-              href="#"
-              class="d-flex align-items-center textColor text-decoration-none dropdown-toggle"
-              id="dropdownUser1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <img
-                src="https://github.com/mdo.png"
-                alt="hugenerd"
-                width="30"
-                height="30"
-                class="rounded-circle"/>
-              <span class="d-none d-sm-inline mx-1">Admin</span>
-            </a>
-            <ul
-              class="dropdown-menu dropdown-menu-dark text-small shadow"
-              aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-          </div>
+          <hr />
         </div>
       </div>
-      <div class="col py-3">
-        <router-outlet></router-outlet>
-      </div>
+    </ng-container>
+    <div class="col">
+      <router-outlet></router-outlet>
     </div>
   </div>
+</div>

@@ -23,8 +23,8 @@ export class EditproductComponent implements OnInit{
   id: string = "";
   thumbnail : any ;
   editProductForm  = new FormGroup({
-    title:new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(10),Validators.pattern('[a-zA-Z0-9 ]*')]),
-    discription :new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(50),Validators.pattern('[a-zA-Z0-9 ]*')]),
+    title:new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(30),Validators.pattern('[a-zA-Z0-9 ]*')]),
+    discription :new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(100),Validators.pattern('[a-zA-Z0-9 ]*')]),
     content:new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(50),Validators.pattern('[a-zA-Z0-9 ]*')]),
     brand :new  UntypedFormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(10),Validators.pattern('[a-zA-Z0-9 ]*')]),
     countStock:new  UntypedFormControl('',Validators.required),
@@ -34,13 +34,14 @@ export class EditproductComponent implements OnInit{
     thumbnail: new UntypedFormControl('',Validators.required)
   })
   ngOnInit(): void {
+    this.getcat();
     this.route.params.subscribe((params: any) => {
       this.productService.getProduct(params.id).subscribe(res => {
         this.id = params.id
         this.editProductForm.patchValue(res.product)
+        this.editProductForm.get('category')?.setValue(res.product.category)
       })
   })
-    this.getcat();
   } 
   getcat(){
     this.categoryService.getAllCategorys().subscribe(({success,categorys}:ResCategory)=> {
@@ -77,10 +78,12 @@ export class EditproductComponent implements OnInit{
     brand:this.editProductForm.controls['brand'].value,
     countStock: this.editProductForm.controls['countStock'].value,
     price: this.editProductForm.controls['price'].value ,
-    category : this.editProductForm.controls['category'].value
+    category : this.editProductForm.controls['category'].value  
   }
+  console.log(product,"dzdzadzazadzadza");
+  
     formData.append('thumbnail', this.thumbnail) ;
-    console.log(formData.get('thumbnail'))
+    // console.log(formData.get('thumbnail'))
     formData.append('product', JSON.stringify(product)) ; 
     this.productService.editProduct(this.id,formData).subscribe(res => {
       if(res.success) {

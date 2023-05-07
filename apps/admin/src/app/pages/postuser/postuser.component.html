@@ -1,0 +1,286 @@
+<!-- <div class="container-fluid">
+    <div class="row mt-3">
+        <div class="shadow-lg p-4 mb-5 bg-body rounded">
+            <div class="col-md-12 mx-auto">
+                <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+                <div class="d-flex">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name" class="form-label mt-2">name</label>
+                            <input formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name">
+                            <small class="text-danger" *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)">
+                                <p *ngIf="userForm.get('name')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="userForm.get('name')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="userForm.get('name')?.errors?.['maxlength']">
+                                    this max is 10 caracter
+                                </p>
+                                <p *ngIf="userForm.get('name')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label mt-2">email</label>
+                            <input formControlName="email" type="email" name="email" placeholder="email" class="form-control" id="email" >
+                            <small class="text-danger" *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.touched || userForm.get('email')?.dirty)">
+                                <p *ngIf="userForm.get('email')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p  *ngIf="userForm.get('email')?.errors?.['email']">
+                                    please enter a valid email
+                                </p>
+                                <p *ngIf="userForm.get('email')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="passeword" class="form-label mt-2">passeword</label>
+                            <input  formControlName="passeword"  type="text" class="form-control" id="passeword" name="passeword" placeholder="passeword">
+                            <small class="text-danger" *ngIf="userForm.get('passeword')?.invalid && (userForm.get('passeword')?.touched || userForm.get('passeword')?.dirty)">
+                                <p *ngIf="userForm.get('passeword')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="userForm.get('passeword')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="userForm.get('passeword')?.errors?.['maxlength']">
+                                    this max is 15 caracter
+                                </p>
+                                <p *ngIf="userForm.get('passeword')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label mt-2">address</label>
+                            <input  formControlName="address"  type="text" class="form-control" id="address" name="address" placeholder="address">
+                            <small class="text-danger" *ngIf="userForm.get('address')?.invalid && (userForm.get('address')?.touched || userForm.get('address')?.dirty)">
+                                <p *ngIf="userForm.get('address')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="userForm.get('address')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="userForm.get('address')?.errors?.['maxlength']">
+                                    this max is 30 caracter
+                                </p>
+                                <p *ngIf="userForm.get('address')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mx-2">
+                        <div class="form-group">
+                            <label for="city" class="form-label mt-2">City</label>
+                            <input  formControlName="city"  type="text" class="form-control" id="city" name="city" placeholder="City">
+                            <small class="text-danger" *ngIf="userForm.get('city')?.invalid && (userForm.get('city')?.touched || userForm.get('city')?.dirty)">
+                                <p *ngIf="userForm.get('city')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="userForm.get('city')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="userForm.get('city')?.errors?.['maxlength']">
+                                    this max is 10 caracter
+                                </p>
+                                <p *ngIf="userForm.get('city')?.errors?.['pattern']">
+                                    this field not respect our pattern
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="country" class="form-label mt-2">country</label>
+                            <input  formControlName="country"  type="text" class="form-control" id="country" name="country" placeholder="country">
+                            <small class="text-danger" *ngIf="userForm.get('country')?.invalid && (userForm.get('country')?.touched || userForm.get('country')?.dirty)">
+                                <p *ngIf="userForm.get('country')?.errors?.['required']">
+                                    this field is required
+                                </p>
+                                <p *ngIf="userForm.get('country')?.errors?.['minlength']">
+                                    this field should be greater than 4 caracter
+                                </p>
+                                 
+                                <p  *ngIf="userForm.get('country')?.errors?.['maxlength']">
+                                    this max is 10 caracter
+                                </p>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label mt-2">phone</label>
+                            <input formControlName="phone"   type="text" class="form-control" id="phone" name="phone"/>
+                            <div class="text-danger" *ngIf="userForm.get('phone')?.invalid && (userForm.get('phone')?.touched || userForm.get('phone')?.dirty)">
+                                <div *ngIf="userForm.get('phone')?.errors?.['required']">
+                                    this field is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <ng-container >
+                        <button   class="my-2 btn btn-primary"><i class="fa fa-send"></i> Submit</button>
+                    </ng-container>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+    <div class="row">
+            <!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            Starting your <br />
+            <span style="color: hsl(218, 81%, 75%)">e-commerce website today?</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Create your new online store today and start selling products to customers around the world! Sign up now to get started.
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+  
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-3 px-md-5">
+              <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" name="name" formControlName="name" id="form3Example1" placeholder="name" class="form-control" />
+                      <!-- <label class="form-label" for="form3Example1">First name</label> -->
+                      <small class="text-danger" *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)">
+                        <p *ngIf="userForm.get('name')?.errors?.['required']">
+                            this field is required
+                        </p>
+                        <p *ngIf="userForm.get('name')?.errors?.['minlength']">
+                            this field should be greater than 4 caracter
+                        </p>
+                         
+                        <p  *ngIf="userForm.get('name')?.errors?.['maxlength']">
+                            this max is 10 caracter
+                        </p>
+                        <p *ngIf="userForm.get('name')?.errors?.['pattern']">
+                            this field not respect our pattern
+                        </p>
+                    </small>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="email" formControlName="email" name="email" id="form3Example2" placeholder="email"  class="form-control" />
+                      <!-- <label class="form-label" for="form3Example2">Last name</label> -->
+                      <small class="text-danger" *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.touched || userForm.get('email')?.dirty)">
+                        <p *ngIf="userForm.get('email')?.errors?.['required']">
+                            this field is required
+                        </p>
+                        <p  *ngIf="userForm.get('email')?.errors?.['email']">
+                            please enter a valid email
+                        </p>
+                        <p *ngIf="userForm.get('email')?.errors?.['pattern']">
+                            this field not respect our pattern
+                        </p>
+                    </small>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="password" formControlName="passeword" name="passeword" id="form3Example3" placeholder="password" class="form-control" />
+                  <!-- <label class="form-label" for="form3Example3">Email address</label> -->
+                  <small class="text-danger" *ngIf="userForm.get('passeword')?.invalid && (userForm.get('passeword')?.touched || userForm.get('passeword')?.dirty)">
+                    <p *ngIf="userForm.get('passeword')?.errors?.['required']">
+                        this field is required
+                    </p>
+                    <p *ngIf="userForm.get('passeword')?.errors?.['minlength']">
+                        this field should be greater than 4 caracter
+                    </p>
+                     
+                    <p  *ngIf="userForm.get('passeword')?.errors?.['maxlength']">
+                        this max is 15 caracter
+                    </p>
+                    <p *ngIf="userForm.get('passeword')?.errors?.['pattern']">
+                        this field not respect our pattern
+                    </p>
+                </small>
+                </div>
+  
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="text" formControlName="address" name="address" placeholder="address" id="form3Example4" class="form-control" />
+                  <!-- <label class="form-label" for="form3Example4">Password</label> -->
+                  <small class="text-danger" *ngIf="userForm.get('address')?.invalid && (userForm.get('address')?.touched || userForm.get('address')?.dirty)">
+                    <p *ngIf="userForm.get('address')?.errors?.['required']">
+                        this field is required
+                    </p>
+                    <p *ngIf="userForm.get('address')?.errors?.['minlength']">
+                        this field should be greater than 4 caracter
+                    </p>
+                     
+                    <p  *ngIf="userForm.get('address')?.errors?.['maxlength']">
+                        this max is 30 caracter
+                    </p>
+                    <p *ngIf="userForm.get('address')?.errors?.['pattern']">
+                        this field not respect our pattern
+                    </p>
+                </small>
+                </div>
+  
+                <!-- Checkbox -->
+                <div class="d-flex justify-content-center mb-4">
+                  <!-- <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked /> -->
+                  <label class="form-check-label" for="form2Example33">
+                    <a routerLink="/login" style="text-decoration: none;">already have an account</a>
+                  </label>
+                </div>
+  
+                <!-- Submit button -->
+               <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                    Sign up
+                  </button> 
+               </div> 
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>or sign up with:</p>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-facebook-f"></i>
+                  </button>
+  
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-google"></i>
+                  </button>
+  
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-twitter"></i>
+                  </button>
+  
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-github"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+    </div>

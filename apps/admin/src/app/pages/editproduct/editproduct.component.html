@@ -9,7 +9,7 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row mt-3">
         <div class="shadow-lg p-4 mb-5 bg-body rounded">
             <div class="col-md-12 mx-auto">
                 <form [formGroup]="editProductForm" (submit)="submit(editProductForm)">
@@ -141,7 +141,7 @@
                         <div class="form-group">
                             <label for="category" class="form-label mt-2">Category<span style="font-size: smaller;" class="text-muted"> (required)</span></label>
                             <select class="form-select" formControlName="category" id="category" name="category">
-                              <option *ngFor="let cat of categories"  [ngValue]="cat" [value]="cat._id">{{cat.label}}</option>
+                              <option *ngFor="let cat of categories"   [value]="cat?._id">{{cat.label}}</option>
                             </select>
                             <small class="text-danger" *ngIf="editProductForm .get('category')?.invalid && (editProductForm .get('category')?.touched || editProductForm .get('category')?.dirty)">
                                 <p *ngIf="editProductForm .get('category')?.errors?.['required']">

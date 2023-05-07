@@ -1,3 +1,4 @@
+import { NeworderComponent } from './pages/neworder/neworder.component';
 import { Route } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListcategoryComponent } from './pages/listcategory/listcategory.component';
@@ -8,8 +9,12 @@ import { ProductComponent } from './pages/product/product.component';
 import { EditproductComponent } from './pages/editproduct/editproduct.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { UsersComponent } from './pages/users/users.component';
+import { PostuserComponent } from './pages/postuser/postuser.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const appRoutes: Route[] = [
+    {path:'register',component:PostuserComponent},
+    {path:'login', component:LoginComponent},
     {path:'admin', component:DashboardComponent},
     {
         path:'admin/category',
@@ -40,7 +45,11 @@ export const appRoutes: Route[] = [
         component:OrdersComponent
     },
     {
+        path:'admin/newOrder',
+        component:NeworderComponent
+    },
+    {
         path:'admin/users',
         component:UsersComponent
-    },
+    }
 ];

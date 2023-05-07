@@ -42,17 +42,10 @@ export class AddcategoryComponent implements OnInit {
       return
     }
     this.categoryService.addCategorys(this.addcategory.value).subscribe(()=>{
-      this.toastr.success('Action completed successfully', 'Success', {
-        positionClass: 'toast-top-right',
-        timeOut: 3000,
-        closeButton: true,
-        progressBar: true,
-        tapToDismiss: false,
-        toastClass: 'toast-success',
-      } as any );
+      this.toastr.success('Action completed successfully', 'Success');
       setTimeout(() => {
         this.router.navigate(['/admin/category'])
-      }, 3500);
+      }, 2000);
       return
     })
       

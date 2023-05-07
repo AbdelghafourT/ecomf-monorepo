@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit{
   }
   getProducts(){
     this.productService.getAllProducts().subscribe((res:ResProduct)=> {
-      this.productss =res.products
+      this.productss = res.products
     })
   }
   // destroyCategory(id:string){

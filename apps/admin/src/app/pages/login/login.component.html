@@ -1,0 +1,85 @@
+<div class="row mt-5">
+  <div class="col-md-6 mx-auto">
+<section class="text-center" >
+  <div class="card  mx-4 mx-md-4 shadow-5-strong " style=" background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);">
+    <div class="card-body rounded-3  px-md-5" >
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Sign in</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="singIn()">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example3">Email address</label>
+              <input type="email" id="form3Example3" name="email" formControlName="email" class="form-control"/>
+              <small class="text-danger" *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)">
+                  <p *ngIf="loginForm.get('email')?.errors?.['required']">
+                      this field is required
+                  </p>
+                  <p  *ngIf="loginForm.get('email')?.errors?.['email']">
+                      please enter a valid email
+                  </p>
+                  <p *ngIf="loginForm.get('email')?.errors?.['pattern']">
+                      this field not respect our pattern
+                  </p>
+              </small>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example4">Password:</label>
+              <input type="password" name="passeword" formControlName="passeword" id="form3Example4" class="form-control"/>
+              <small class="text-danger" *ngIf="loginForm.get('passeword')?.invalid && (loginForm.get('passeword')?.touched || loginForm.get('passeword')?.dirty)">
+                  <p *ngIf="loginForm.get('passeword')?.errors?.['required']">
+                      this field is required
+                  </p>
+                  <p *ngIf="loginForm.get('passeword')?.errors?.['minlength']">
+                      this field should be greater than 4 caracter
+                  </p>
+                   
+                  <p  *ngIf="loginForm.get('passeword')?.errors?.['maxlength']">
+                      this max is 15 caracter
+                  </p>
+                  <p *ngIf="loginForm.get('passeword')?.errors?.['pattern']">
+                      this field not respect our pattern
+                  </p>
+              </small>
+            </div>
+            <!-- Checkbox -->
+            <!-- <div class="form-check d-flex justify-content-center mb-4">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+              <label class="form-check-label" for="form2Example33">
+                Subscribe to our newsletter
+              </label>
+            </div> -->
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+              Sign in
+            </button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>or sign up with:</p>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-facebook-f"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-google"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-twitter"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-github"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+  </div>
+</div>
