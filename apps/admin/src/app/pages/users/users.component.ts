@@ -4,6 +4,7 @@ import { UsersService } from './../../../../../../libs/shared/src/lib/services/u
 import { Component, OnInit } from '@angular/core';
 import { ResUsers, Users } from 'libs/shared/src/lib/models/users';
 import Swal from 'sweetalert2';
+import { FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'admin-users',
@@ -13,19 +14,28 @@ import Swal from 'sweetalert2';
 export class UsersComponent implements OnInit {
   constructor(private usersService:UsersService,private route: ActivatedRoute,private avatarService: AvatarService){}
   userss:Users[]=[];
+  oneuser:any;
   avatarUrl='';
 
   ngOnInit(): void {
-    this.getUsres();
-    this.addAvatar();
-    
+    this.getUsers();
+    this.addAvatar(); 
   }
-  getUsres(){
-    this.usersService.getAllUsers().subscribe(({success,user}:ResUsers)=> {
-      if(success){
-        this.userss = user
-      }
-    })
+ 
+  // getUsres(){
+  //   this.usersService.getAllUsers().subscribe(({success,user}:ResUsers)=> {
+  //     if(success){
+  //       this.userss = user
+  //     }
+  //   })
+  // }
+  getUsers() {
+    this.usersService.getAllUsers().subscribe(({success,user}:ResUsers) => {
+      const users = user.map((user: Users) => ({ ...user }));
+      this.usersService.assignAvatarsToUsers(users);
+      this.userss = users;
+
+    });
   }
    addAvatar(){
     this.avatarService.getRandomAvatar().subscribe((image: Blob) => {
@@ -46,7 +56,7 @@ export class UsersComponent implements OnInit {
       if (result.isConfirmed) {
         this.usersService.deleteUser(id).subscribe((res)=> {
           this.userss = res.user
-          this.getUsres()
+          this.getUsers()
         })
         Swal.fire(
           'Deleted!',
@@ -54,6 +64,14 @@ export class UsersComponent implements OnInit {
           'success'
         )
       }
+    })
+  }
+
+  upgradeUser(user:Users){
+    user.isAdmin = !user.isAdmin; 
+    let {_id,name,email,passeword,adresse,city,country,phone,isAdmin} = user
+    this.usersService.makeUserAdmin(_id,{isAdmin}).subscribe((res)=>{
+      //this.oneuser = res.user
     })
   }
 }

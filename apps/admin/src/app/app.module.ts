@@ -6,7 +6,7 @@ import { appRoutes } from './app.routes';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListcategoryComponent } from './pages/listcategory/listcategory.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdatecategoryComponent } from './pages/updatecategory/updatecategory.component';
@@ -22,6 +22,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { PostuserComponent } from './pages/postuser/postuser.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NeworderComponent } from './pages/neworder/neworder.component';
+import { UsersModule, AuthGuard, AuthInterceptor } from '@brightcoding/users';
 
 
 
@@ -31,13 +32,14 @@ import { NeworderComponent } from './pages/neworder/neworder.component';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    UsersModule,
     FormsModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [],
+  providers: [AuthGuard,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}], // we import the AuthGuard from lib (gard !important(aleardy export from index.ts))
   bootstrap: [AppComponent],
 })
 export class AppModule {}

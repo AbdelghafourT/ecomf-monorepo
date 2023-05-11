@@ -37,14 +37,24 @@
           <ul class="list-group list-group-light mb-2">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
-                <img [src]="avatarUrl" alt="Avatar" style="width: 45px; height: 45px"
+                <img [src]="user.avatar" alt="Avatar" style="width: 45px; height: 45px"
                   class="rounded-circle" />
                 <div class="ms-3">
                   <p class="fw-bold mb-1">{{user.name}}</p>
                   <p class="text-muted mb-0">{{user.email}}</p>
                 </div>
               </div>
-              <a class="btn btn-link btn-rounded btn-sm text-danger"  (click)="destroyUser(user?._id ?? '')" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              <div class="d-flex justify-content-between">
+                <fieldset class="form-group">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input mt-2"  (click)="upgradeUser(user)" [checked]="user.isAdmin" type="checkbox" id="flexSwitchCheckDefault">
+                  </div>
+                </fieldset>
+                <!-- <ng-container *ngIf="">
+
+                </ng-container> -->
+                <a class="btn btn-link btn-rounded btn-sm text-danger"  (click)="destroyUser(user?._id ?? '')" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </div>
             </li>
           </ul>
         </div>

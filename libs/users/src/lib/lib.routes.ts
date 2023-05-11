@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { AuthentificationComponent } from './authentification/authentification.component';
+import { SinginComponent } from './components/singin/singin.component';
 
 export const usersRoutes: Route[] = [
-    { path: 'authentification', component: AuthentificationComponent },
+    { path: 'singin', component: SinginComponent },
 ];

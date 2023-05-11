@@ -13,11 +13,13 @@ export class HomeComponent implements OnInit{
   productss :Product[]=[];
   ngOnInit(): void {
     this.getProducts();
-    // console.log('ccczecez')
+     console.log('ccczecez')
   }
   getProducts(){
     this.productService.getAllProducts().subscribe((res:ResProduct)=> {
       this.productss = res.products
+      //console.log(res,'fzfz');
+      
     })
   }
 }

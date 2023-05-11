@@ -119,7 +119,7 @@ export class OrdersComponent implements OnInit{
     this.ordersService.cancelOrders(_id, { shippingAddress, invoiceAddress, city, country, phone, status, total, user, orderItems }).subscribe(
       response => {
         this.toastr.success('Order refunded and deleted successfully', 'Success');
-          // delete order
+          // delete we are delting the order after we display to user cancel button 
           this.ordersService.deleteOrder(order._id ?? '').subscribe((res)=>{
             this.Orders = res.orders;
             setTimeout(() => {

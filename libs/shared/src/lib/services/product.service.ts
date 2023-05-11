@@ -24,7 +24,7 @@ export class ProductService {
   deleteProduct(id:string):Observable<ResProduct>{
     return this.http.delete<ResProduct>(`${this.apiUrl}/${id}`)
   }
-    editProduct(id:string|undefined,data:any):Observable<ResOneProduct>{
-      return this.http.put<ResOneProduct>(`${this.apiUrl}/${id}`,data)
-    }
+  editProduct(id:string|undefined,data:any):Observable<ResOneProduct>{
+    return this.http.put<ResOneProduct>(`${this.apiUrl}/${id}`,data)
+  }
 }
