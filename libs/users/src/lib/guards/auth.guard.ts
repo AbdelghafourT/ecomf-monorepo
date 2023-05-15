@@ -11,6 +11,8 @@ export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const token:string | null = this.storageService.getToken();
+    //const tokenString: string = token !== null ? token : '';
+
 
     if(!token){
       this.router.navigate(['/singin'])
@@ -25,7 +27,6 @@ export class AuthGuard implements CanActivate {
       // methode 2
       const payload = token.split('.')[1]
       const {isAdmin,exp,email} = JSON.parse(atob(payload));
-      //console.log(email); 
       this.storageService.setEmail(email); 
       return isAdmin && !this.storageService.expiredToken(exp)      
     }

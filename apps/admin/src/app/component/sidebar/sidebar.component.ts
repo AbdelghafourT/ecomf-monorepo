@@ -10,12 +10,14 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 })
 export class SidebarComponent implements OnInit{
   email:string | null = ''
+  //user:string | null = null
   currentUser:any
 constructor(private route : ActivatedRoute,public router:Router,private authService:AuthService,private storageService:StorageService){}
  
   ngOnInit(): void {
    this.storageService.userObject$.subscribe((email:string)=>{this.email = email});  
-   this.email = this.storageService.getEmail() || ''
+   //this.email = this.storageService.getEmail() || ''
+   //this.storageService.user.subscribe((res:string | null) => this.user = res);
   }
 
 logout() {
